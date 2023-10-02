@@ -1,0 +1,43 @@
+
+Autosys is one of the most popular job scheduling tools used in the software development lifecycle process. It is a task scheduler created by using a batch program or UNIX script. To create/run an Autosys jobs, a user needs to have either a LINUX or Windows machine. Here are some of heavily used Autosys Commands.
+
+•	Command to define a job
+$jil -f <bash file directory/Name of bash file.jill> -i <Environment info> -l -v -o
+•	Checking status of job
+$autorep -J <NAME OF JOB>
+•	Start a job
+$sendevent -E START JOB -J <NAME OF JOB>
+$sendevent -E FORCE_START_JOB -J <NAME OF JOB>
+•	Kill a job
+$sendevent -E KILL JOB -J <NAME OF JOB>
+•	Put a job On HOLD
+$sendevent -E JOB_ON_HOLD -J <NAME OF JOB>
+•	Put a job Off HOLD
+$sendevent -E JOB_OFF_HOLD -J <NAME OF JOB>
+•	Put a job On Ice
+$sendevent -E JOB_ON_ICE -J <NAME OF JOB>
+•	Put a job Off Ice
+$sendevent -E JOB_OFF_ICE -J <NAME OF JOB>
+•	Change status of job (for example change into Success status
+$sendevent -E CHANGE_STATUS -S SUCCESS -J <NAME OF JOB>
+•	Command to check the status of the Autosys job automatically
+while true <Enter>
+do <Enter>
+autorep -j <Name of the Job> <Enter>
+sleep 10 <Enter>
+done <Enter>
+This command will display the status of the job every 10 seconds
+To kill this Autosys command, Press Control+C
+•	Killing an Autosys job using Workflow ID
+First of all, get a Workflow details using the following command
+ps -ef | grep <LoginID>
+ 
+After getting the workflow ID, kill the job using the following command
+kill -9 <Workflow ID>
+•	To get information about the previous run
+$autorep -J <NAME OF JOB> -r <No of runs back>
+•	To list all the job present in a Job box
+$autorep -J %<NAME OF JOB>% -q
+•	To check the dependency on the job
+$job_depands -c -w -J <NAME OF JOB>
+ 
